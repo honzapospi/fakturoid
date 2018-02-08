@@ -1,0 +1,21 @@
+#login-form{
+    display: block;
+    margin: 150px auto;
+    width: 300px;
+    background: rgba(209, 209, 209, 0.76);
+    border-radius: 10px;
+    padding: 10px 30px;
+}
+
+#alerts {
+    display: block;
+    margin: 20px;
+}
+
+#default-form{
+    margin: 20px auto;
+    display: block;
+    width: 80%;
+    background: #e0e0e0;
+    padding: 30px;
+}

@@ -11,7 +11,8 @@ use Nette;
 
 class ListPresenter extends BasePresenter {
 
+	public function actionDefault(){
 
-
+	}
 
 }
