@@ -26,6 +26,10 @@ class Model {
 			'password' => md5($password)
 		]);
     }
+
+    public function getUser($username){
+    	return $this->context->table('user')->where('email', $username)->fetch();
+    }
 }
 
 class InvalidValueException extends \Exception {

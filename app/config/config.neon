@@ -21,3 +21,4 @@ services:
 	- App\UserModule\CreateAccountFormControl
 	- App\UserModule\LoginFormControl
 	- App\Model\Model
+	- App\Authenticator

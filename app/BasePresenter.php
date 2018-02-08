@@ -17,4 +17,15 @@ use Nette\Application\UI\Presenter;
 
 abstract class BasePresenter extends Presenter {
 
+	public function formatTemplateFiles(){
+		$presenter = strtr($this->getName(), [':' => '/']);
+		$dir = dirname($this->getReflection()->getFileName());
+		$dir = is_dir("$dir/templates") ? $dir : dirname($dir);
+		//dumpe($presenter);
+		return [
+			"$dir/templates/$presenter/$this->view.latte",
+			"$dir/templates/$presenter.$this->view.latte",
+		];
+	}
+
 }
