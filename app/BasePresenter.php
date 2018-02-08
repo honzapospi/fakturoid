@@ -6,6 +6,8 @@
 
 namespace App;
 
+use App\Layout\IMenuControlFactory;
+use App\Layout\MenuControl;
 use Nette\Application\BadRequestException,
 	Nette\Application\ForbiddenRequestException;
 use Nette\Application\UI\Presenter;
@@ -17,6 +19,14 @@ use Nette\Application\UI\Presenter;
 
 abstract class BasePresenter extends Presenter {
 
+	private $menuControlFactory;
+
+
+	public function injectMenuControl(IMenuControlFactory $menuControlFactory){
+		$this->menuControlFactory = $menuControlFactory;
+	}
+
+
 	public function formatTemplateFiles(){
 		$presenter = strtr($this->getName(), [':' => '/']);
 		$dir = dirname($this->getReflection()->getFileName());
@@ -26,6 +36,14 @@ abstract class BasePresenter extends Presenter {
 			"$dir/templates/$presenter/$this->view.latte",
 			"$dir/templates/$presenter.$this->view.latte",
 		];
+	}
+
+	/**
+	* @return Nette\Application\UI\Control
+	*/
+	protected function createComponentMenu(){
+	    $control = $this->menuControlFactory->create();
+	    return $control;
 	}
 
 }

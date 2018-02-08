@@ -23,7 +23,7 @@ class LoginFormControl {
     public function create(){
     	$form = $this->formFactory->create();
     	$form->addText('email', 'email')->setRequired();
-    	$form->addPassword('password')->setRequired();
+    	$form->addPassword('password', 'Password')->setRequired();
     	$form->addSubmit('formasubmit', 'Login');
     	$form->onSuccess[] = [$this, 'formSubmitted'];
     	return $form;

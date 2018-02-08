@@ -11,6 +11,12 @@ final class AuthPresenter extends \App\BasePresenter {
 		$this->loginFormControl = $loginFormControl;
 	}
 
+	public function actionLogin(){
+		if($this->user->isLoggedIn()){
+			$this->redirect(':Invoice:List:default');
+		}
+	}
+
 
 	public function actionLogout(){
 		$this->user->logout(TRUE);

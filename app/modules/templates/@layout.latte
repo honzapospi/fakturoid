@@ -24,9 +24,10 @@
 <body>
 	<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
 
-	<a n:href=":User:Auth:login">login</a>
-	<a n:href=":User:Auth:login">logout</a>
-	<a n:href=":User:Registration:default">registration</a>
+	{if $user->isLoggedIn()}
+		{control menu}
+	{/if}
+
 
 	{include content}
 

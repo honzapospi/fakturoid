@@ -17,7 +17,7 @@ class RouterFactory
 	public static function createRouter()
 	{
 		$router = new RouteList;
-		$router[] = new Nette\Application\Routers\SimpleRouter('Homepage:Homepage:default');
+		$router[] = new Nette\Application\Routers\SimpleRouter('User:Auth:login');
 		//$router[] = new Route('<presenter>/<action>[/<id>]', 'Homepage:Homepage:default');
 		return $router;
 	}

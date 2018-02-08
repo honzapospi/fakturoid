@@ -22,3 +22,4 @@ services:
 	- App\UserModule\LoginFormControl
 	- App\Model\Model
 	- App\Authenticator
+	- App\Layout\IMenuControlFactory
