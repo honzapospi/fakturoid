@@ -1,0 +1,30 @@
+# WARNING: it is CRITICAL that this file & directory are NOT accessible directly via a web browser!
+# https://nette.org/security-warning
+
+parameters:
+
+extensions:
+	controllers: RestServer\ControllersExtension
+
+database:
+	dsn: 'mysql:host=127.0.0.1;dbname=dbfakturoid'
+	user: fakturoid
+	password: 6sd6fg84sfdg
+
+
+php:
+	date.timezone: Europe/Prague
+
+session:
+	expiration: 14 days
+
+
+services:
+	- RestServer\Application
+	- Rest\RouteListFactory
+	- RestServer\IResponseFactory
+	- RestServer\JsonRenderer
+	- RestServer\ParametersAccessor
+controllers:
+	- App\InvoiceModule\InvoiceListController
+	- App\InvoiceModule\CreateInvoiceController

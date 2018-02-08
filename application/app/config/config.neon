@@ -24,3 +24,5 @@ services:
 	- App\Authenticator
 	- App\Layout\IMenuControlFactory
 	- App\InvoiceModule\InvoiceFormControl
+	- class: JP\RestClient\Rest
+	  arguments: ['http://localhost/nette_7_2_2018/fakturoid/api/www']

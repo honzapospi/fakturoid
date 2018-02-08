@@ -1,0 +1,23 @@
+{block content}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Invoice number</th>
+            <th>Created</th>
+            <th>Company</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        {foreach $invoices as $invoice}
+            <tr>
+                <td>{$invoice->invoice_number}</td>
+                <td>{$invoice->created|date:'j.n.Y'}</td>
+                <td>{$invoice->company->name}</td>
+                <td>{$invoice->price}</td>
+            </tr>
+        {/foreach}
+    </tbody>
+</table>
