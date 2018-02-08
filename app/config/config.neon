@@ -1,0 +1,22 @@
+parameters:
+
+database:
+	dsn: 'mysql:host=127.0.0.1;dbname=dbfakturoid'
+	user: fakturoid
+	password: 6sd6fg84sfdg
+
+application:
+	errorPresenter: Error
+	mapping:
+		*: App\*Module\*Presenter
+
+
+session:
+	expiration: 14 days
+
+
+services:
+	router: App\RouterFactory::createRouter
+	- App\FormFactory
+	- App\UserModule\CreateAccountFormControl
+	- App\Model\Model
