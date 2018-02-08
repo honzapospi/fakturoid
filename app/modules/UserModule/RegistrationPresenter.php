@@ -23,6 +23,10 @@ class RegistrationPresenter extends BasePresenter {
 	 */
 	protected function createComponentCreateAccountForm(){
 		$control = $this->createAccountFormControl->create();
+		$control->onSuccess[] = function($form, $values) {
+			$this->flashMessage('Account with username '.$values->username.' has been created.');
+			$this->redirect('Auth:login');
+		};
 		return $control;
 	}
 

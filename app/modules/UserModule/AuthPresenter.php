@@ -5,10 +5,10 @@ namespace App\UserModule;
 
 final class AuthPresenter extends \App\BasePresenter {
 
-	private $createAccountFormControl;
+	private $loginFormControl;
 
-	public function __construct(CreateAccountFormControl $control) {
-		$this->createAccountFormControl = $control;
+	public function __construct(LoginFormControl $loginFormControl) {
+		$this->loginFormControl = $loginFormControl;
 	}
 
 
@@ -22,8 +22,12 @@ final class AuthPresenter extends \App\BasePresenter {
 	/**
 	* @return \Nette\Application\UI\Control
 	*/
-	protected function createComponentCreateAccountForm(){
-	    $control = $this->createAccountFormControl->create();
+	protected function createComponentLoginForm(){
+	    $control = $this->loginFormControl->create();
+	    $control->onSuccess[] = function (){
+	        $this->flashMessage('Login successful');
+	        $this->redirect(':Invoice:List:default');
+	    };
 	    return $control;
 	}
 

@@ -4,6 +4,7 @@ use App\FormFactory;
 use App\Model\InvalidValueException;
 use App\Model\Model;
 use Nette;
+use Tracy\Debugger;
 
 /**
  * Copyright (c) Jan Pospisil (http://www.jan-pospisil.cz)
@@ -27,7 +28,8 @@ class CreateAccountFormControl {
     	$form->addText('username', 'Username')
 	    ->setRequired('Username is required.')
 	    ->addRule(Nette\Application\UI\Form::EMAIL, 'Username mus tb email.')
-	    ->setEmptyValue('@');
+	    ->setEmptyValue('@')
+	    ->addRule(Nette\Application\UI\Form::MAX_LENGTH, 'Username is too length. Max is %d', 50);
     	$form->addPassword('password', 'Password')
 		    ->setRequired('Password is required')
 		    ->addRule(Nette\Application\UI\Form::MIN_LENGTH, 'Minimal password length is %d', 5);
@@ -45,9 +47,12 @@ class CreateAccountFormControl {
 		    $this->model->createAccount($values->username, $values->password);
 	    } catch (InvalidValueException $e){
 			return $form->addError($e->getMessage());
+	    } catch (Nette\Database\UniqueConstraintViolationException $e){
+	    	return $form->addError('Email is already registered.');
+	    } catch (\Exception $e){
+	    	Debugger::log($e);
+	    	return $form->addError('Sorry something is wrong. Try again later.');
 	    }
-		$form->getPresenter()->flashMessage('Account has been created.');
-	    $form->getPresenter()->redirect('Auth:login');
     }
 
 

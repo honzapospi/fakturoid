@@ -19,4 +19,5 @@ services:
 	router: App\RouterFactory::createRouter
 	- App\FormFactory
 	- App\UserModule\CreateAccountFormControl
+	- App\UserModule\LoginFormControl
 	- App\Model\Model
