@@ -26,7 +26,6 @@ abstract class BasePresenter extends Presenter {
 		$this->menuControlFactory = $menuControlFactory;
 	}
 
-
 	public function formatTemplateFiles(){
 		$presenter = strtr($this->getName(), [':' => '/']);
 		$dir = dirname($this->getReflection()->getFileName());

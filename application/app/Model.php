@@ -30,6 +30,10 @@ class Model {
 		]);
     }
 
+    public function getInvoice($id){
+    	return $this->context->table('invoice')->get($id);
+    }
+
     public function getUser($username){
     	return $this->context->table('user')->where('email', $username)->fetch();
     }
@@ -44,6 +48,18 @@ class Model {
 		    'company_id' => $companyId
 	    ];
     	$this->context->table('invoice')->insert($entry);
+    }
+
+    public function updateInvoice(string $number, int $price, \DateTime $created, string $description, Nette\Security\User $user, int $companyId, Nette\Http\FileUpload $invoice = null, bool $deleteFile = null ,int $id){
+	    $entry = [
+		    'invoice_number' => $number,
+		    'price' => $price,
+		    'created' => $created,
+		    'description' => $description,
+		    'user_id' => $user->id,
+		    'company_id' => $companyId
+	    ];
+	    $this->context->table('invoice')->get($id)->update($entry);
     }
 
     public function getCompanies($id){

@@ -1,0 +1,9 @@
+.idea/
+api/log
+api/temp
+api/vendor
+application/vendor
+application/temp
+application/log
+api/.idea
+application/.idea

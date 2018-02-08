@@ -27,5 +27,4 @@ class ListPresenter extends BasePresenter {
 		$this->template->invoices = $this->list;
 		$this->template->title = 'List';
 	}
-
 }

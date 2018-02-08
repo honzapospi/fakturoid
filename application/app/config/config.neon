@@ -1,4 +1,5 @@
 parameters:
+	version: 1.0.0
 
 database:
 	dsn: 'mysql:host=127.0.0.1;dbname=dbfakturoid'
@@ -26,3 +27,4 @@ services:
 	- App\InvoiceModule\InvoiceFormControl
 	- class: JP\RestClient\Rest
 	  arguments: ['http://localhost/nette_7_2_2018/fakturoid/api/www']
+
